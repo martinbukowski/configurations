@@ -17,3 +17,4 @@ setcap cap_net_bind_service=+ep /opt/nginx/sbin/nginx
 
 yum install openldap openldap-devel
 yum install krb5-server krb5-libs krb5-workstation
+http://www.linuxproblems.org/wiki/Set_up_kerberos_on_Centos_6
