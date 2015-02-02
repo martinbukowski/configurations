@@ -1,0 +1,19 @@
+ 
+yum groupinstall "Development Tools"
+yum install git screen
+yum install lua lua-devel pcre-devel zlib-devel openssl-devel
+
+git clone https://github.com/nginx/nginx.git
+git clone https://github.com/fintler/nginx-mod-auth-kerb.git
+git clone https://github.com/simpl/ngx_devel_kit.git
+
+cd nginx
+
+./configure --prefix=/opt/nginx --add-module=../ngx_devel_kit \
+  --add-module=../lua-nginx-module --add-module=../nginx-mod-auth-kerb
+
+make && make install
+setcap cap_net_bind_service=+ep /opt/nginx/sbin/nginx
+
+yum install openldap openldap-devel
+yum install krb5-server krb5-libs krb5-workstation
